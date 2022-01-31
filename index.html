@@ -1,0 +1,199 @@
+﻿
+
+<!DOCTYPE html>
+<html lang="zh-cn" >
+<head>
+<meta charset="UTF-8">
+<audio src="https://www.wpon.cn/wp-content/uploads/2021/11/2021112204400191.mp3" hidden="false" autoplay="true" loop="true"></audio>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<title>2022年倒计时</title>
+<!--<meta name="viewport" content="width=device-width">-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0">
+<!-- 页面样式 -->
+<link href="https://www.wpon.cn/2022/css/style.css" type="text/css" rel="stylesheet" >
+<!-- 弹窗样式 -->
+<link href="https://www.wpon.cn/2022/css/tanchuang.css" type="text/css" rel="stylesheet"/>
+<!-- 灯笼样式 -->
+<link href="https://www.wpon.cn/2022/css/denglong.css" type="text/css" rel="stylesheet"/>
+
+<!-- 弹窗样式 -->
+<link href="https://www.wpon.cn/2022/css/tanchuang.css" type="text/css" rel="stylesheet"/>
+<!-- js样式 -->
+<script src="https://www.wpon.cn/2022/js/messes.js" type="text/javascript"></script>
+<script src="https://www.wpon.cn/2022/js/timedown.js" type="text/javascript"></script>
+<!--<script src="https://www.wpon.cn/2022/js/script.js"></script>-->
+
+</head>
+<!-- 电脑显示 -->
+<div class="showpc">
+<body onload="snow()">
+    
+<!--春节灯笼-->
+<div th:replace="~{common::lantern}"></div>
+<canvas id="background"></canvas>
+<div class="container">
+    <!-- 夏柔QQ：15001904 -->
+    
+    <p style="color:white;text-align:center"></p>
+    <div class="h1"><h3 id="message">春节倒计时</h3></div>
+	<div id="countdown"><p>加载中...</p></div>
+</div>
+<div th:fragment="lantern">
+    <!--春节灯笼-->
+    <div class="deng-box denglong">
+        <div class="deng">
+            <div class="xian"></div>
+            <div class="deng-a">
+                <div class="deng-b">
+                    <div class="deng-t">节</div>
+                </div>
+            </div>
+            <div class="shui shui-a">
+                <div class="shui-c"></div>
+                <div class="shui-b"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="deng-box1 denglong">
+        <div class="deng">
+            <div class="xian"></div>
+            <div class="deng-a">
+                <div class="deng-b">
+                    <div class="deng-t">春</div>
+                </div>
+            </div>
+            <div class="shui shui-a">
+                <div class="shui-c"></div>
+                <div class="shui-b"></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+
+<!-- 手机显示 -->
+    <script>
+try {
+        var urlhash = window.location.hash;
+        if (!urlhash.match("fromapp")) {
+            if ((navigator.userAgent.match(/(iPhone|iPod|Android|ios|iPad)/i))) {
+                window.location = "wap.html";
+            }
+        }
+    } catch (err) {}
+    </script>
+<style>
+/* 自动播放 */
+    
+/* 手机显示 */
+.showphone{display:inline;}
+@media (min-width:960px){
+.showphone{display:none;}
+}
+/* 电脑显示 */
+.showpc{display:none;}
+@media (min-width:960px){
+.showpc{display:inline;}
+}
+</style>
+
+<script>
+
+    //Snowflakes
+function snow(){
+
+    const canvas = document.getElementById("background");
+    const ctx = canvas.getContext("2d");
+
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+
+    //Set number of snowflakes
+    let numberFlakes = 400;
+    let snowflakes = [];
+
+    for(let i = 0; i < numberFlakes; i++){
+        snowflakes.push({
+            x: Math.random()*width,
+            y: Math.random()*height,
+            r: Math.random()*3+1,
+            d: Math.random() + 2
+        })
+    }
+
+    //Draw the snowflakes
+    // function drawFlakes(){
+    //     ctx.clearRect(0, 0, width, height);
+    //     ctx.fillStyle = "white";
+    //     ctx.beginPath();
+
+    //     for(let i = 0; i < numberFlakes; i++){
+    //         let sf = snowflakes[i];
+    //         ctx.moveTo(sf.x, sf.y);
+    //         ctx.arc(sf.x, sf.y, sf.r, 0, Math.PI*2, true);
+    //     }
+    //     ctx.fill();
+    //     moveFlakes();
+    // }
+
+    //Move the snowflakes
+    // function moveFlakes(){
+    //     for(let i = 0; i < numberFlakes; i++){
+    //         let sf = snowflakes[i];
+    //         sf.y += Math.pow(sf.d, 2) + 1;
+
+    //         if(sf.y > height){
+    //             snowflakes[i] = {
+    //                 x: Math.random()*width, y: 0, r: sf.r, d: sf.d
+    //             };
+    //         }
+    //     }
+    // }
+    //Snowflake animation
+//     setInterval(drawFlakes, 26);
+}
+
+//Countdown timer
+//11am on December 25th
+const countDownDate = new Date("Feb 1, 2022, 00:00:00").getTime();
+
+const x = setInterval(function(){
+    //Today's date + time
+    let now = new Date().getTime();
+    let distance = countDownDate - now;
+
+    //Calculations for days/hours/minutes/seconds
+    let days = Math.floor(distance / (1000*60*60*24));
+    let hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+    let minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+    let seconds = Math.floor((distance % (1000*60)) / 1000);
+
+    document.getElementById("countdown").innerHTML = days + "天 " + hours + "时 " + minutes + "分" + seconds + "秒";
+
+    if(distance < 0){
+        clearInterval(x);
+        document.getElementById("message").innerHTML = "Happy new year!";
+        document.getElementById("countdown").innerHTML = "祝大家新年快乐！"
+        alert("新年快乐!");
+    }
+}, 1000);
+
+// 单个IP只弹一次
+var cookieString = new String(document.cookie) 
+alert(cookieString)
+var cookieHeader = 'happy_pop='  
+var beginPosition = cookieString.indexOf(cookieHeader) 
+if (beginPosition <0){ 
+alert("春节当天（2月1日）免费发放支付宝红包口令，红包金额高达88～888元，记得定个闹钟！");
+var Then = new Date()　　　　 
+Then.setTime(Then.getTime() + 60*1000 ) //同一ip设置过期时间，即多长间隔跳出一次 
+document.cookie = 'happy_pop=yes;expires='+ Then.toGMTString()　  
+} 
+</script>
+</body>
+</html>
