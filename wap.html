@@ -355,6 +355,18 @@ $('.getrule,.close-rule').click(function(){
 })
 </script>
 <script type="text/javascript" src="./files/timedown.js.下载"></script>
+<script>
+const countDownDate = new Date("Feb 1, 2022, 00:00:00").getTime();
+
+const x = setInterval(function(){
+    //Today's date + time
+    let now = new Date().getTime();
+    let distance = countDownDate - now;
+    if(distance < 0){
+        alert("新年快乐!");
+    }
+}, 1000);
+</script>
 	<script>
 		//倒计时
 		$(function() {
