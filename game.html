@@ -1,1 +1,17 @@
-<h1>时间尚早，彩蛋还没弄好[doge]<h1>
+<html>
+  <head>
+    <title>彩蛋</title>
+  </head>
+    <body>
+      <script>
+      const countDownDate = new Date("Feb 1, 2022, 00:00:00").getTime();
+      let now = new Date().getTime();
+      let distance = countDownDate - now;
+      if(distance > 0){
+        alert("彩蛋弄好啦,但时间尚早[doge]");
+      }else{
+        window.location.href("/caidan/index.html")
+      }
+      </script>
+     </body>
+</html>
