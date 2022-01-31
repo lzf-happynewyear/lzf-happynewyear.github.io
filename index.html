@@ -199,7 +199,6 @@ alert(cookieString)
 var cookieHeader = 'happy_pop='  
 var beginPosition = cookieString.indexOf(cookieHeader) 
 if (beginPosition <0){ 
-alert("春节当天（2月1日）免费发放支付宝红包口令，红包金额高达88～888元，记得定个闹钟！");
 var Then = new Date()　　　　 
 Then.setTime(Then.getTime() + 60*1000 ) //同一ip设置过期时间，即多长间隔跳出一次 
 document.cookie = 'happy_pop=yes;expires='+ Then.toGMTString()　  
